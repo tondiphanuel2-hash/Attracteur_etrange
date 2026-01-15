@@ -1,0 +1,129 @@
+# 🔧 Object Files Directory (obj/)
+
+Ce dossier contient les **fichiers objets** générés pendant la compilation.
+
+## 📋 Contenu
+
+Les fichiers objets (.o ou .obj) sont des fichiers binaires intermédiaires créés par le compilateur avant la création de l'exécutable final.
+
+### Structure Typique
+```
+build/obj/
+├── main.o
+├── Game.o
+├── Renderer.o
+├── Camera3D.o
+├── AttractorSystem.o
+├── LorenzAttractor.o
+├── RosslerAttractor.o
+├── ChenAttractor.o
+├── ParticleSystem.o
+├── UIController.o
+├── PresentationMode.o
+├── Colors.o
+├── Screenshot.o
+└── ... (tous les .cpp compilés)
+```
+
+## 🔄 Processus de Compilation
+
+```
+Source (.cpp) → Compilation → Object (.o) → Linkage → Exécutable
+```
+
+1. **Compilation** : Chaque `.cpp` → `.o`
+2. **Linkage** : Tous les `.o` + bibliothèques → exécutable
+
+## 💡 Avantages
+
+- **Compilation incrémentale** : Seuls les fichiers modifiés sont recompilés
+- **Temps de build réduit** : Ne recompile pas tout à chaque fois
+- **Débogage facilité** : Fichiers intermédiaires disponibles
+
+## 📊 Taille Typique
+
+```
+Chaque fichier .o : 10-200 KB
+Total pour ChaosSim : ~2-5 MB
+```
+
+## 🗑️ Nettoyage
+
+Ces fichiers peuvent être supprimés sans danger :
+
+```bash
+# Avec le script de build
+python build.py clean
+
+# Manuellement
+rm -rf build/obj/*      # Linux/macOS
+del /Q build\obj\*      # Windows
+```
+
+La prochaine compilation les recréera automatiquement.
+
+## 🔒 Git
+
+Ce dossier est listé dans `.gitignore` et ne doit **PAS** être commité.
+Les fichiers objets sont spécifiques à chaque machine/compilateur.
+
+## 🛠️ Compilation Manuelle (Exemple)
+
+Si vous voulez compiler manuellement :
+
+```bash
+# Compiler un fichier source en objet
+clang++ -std=c++17 -c src/main.cpp -o build/obj/main.o \
+    -Isrc -Ithirdparty/SDL3/include -Ithirdparty/imgui -Ithirdparty/glm
+
+# Linker tous les objets
+clang++ build/obj/*.o -o build/bin/ChaosSim \
+    -Lthirdparty/SDL3/lib/linux -lSDL3
+```
+
+## 📝 Format des Fichiers
+
+- **Linux/macOS** : `.o` (format ELF)
+- **Windows** : `.obj` (format COFF)
+
+Ces fichiers sont **binaires** et ne peuvent pas être lus directement.
+
+## 🔍 Inspection des Objets
+
+Pour voir le contenu d'un fichier objet :
+
+```bash
+# Linux
+nm build/obj/Game.o          # Liste les symboles
+objdump -d build/obj/Game.o  # Désassemble
+
+# Windows
+dumpbin /SYMBOLS build\obj\Game.obj
+```
+
+## ⚡ Optimisation
+
+Les fichiers objets peuvent être optimisés avec des flags de compilation :
+
+```bash
+# Debug (gros fichiers, symboles)
+clang++ -g -O0 -c main.cpp -o main.o
+
+# Release (petits fichiers, optimisés)
+clang++ -O2 -c main.cpp -o main.o
+
+# Release optimisé agressivement
+clang++ -O3 -c main.cpp -o main.o
+```
+
+## 📌 Note Importante
+
+Si vous rencontrez des erreurs de linkage étranges, essayez :
+
+```bash
+# Nettoyer tous les objets et recompiler
+python build.py clean
+python build.py
+```
+
+Cela résout souvent les problèmes causés par des objets obsolètes.

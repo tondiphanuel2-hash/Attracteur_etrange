@@ -1,0 +1,79 @@
+# 🎨 Icons Directory
+
+Ce dossier contient les icônes utilisées dans ChaosSim.
+
+## 📋 Icônes Incluses
+
+Actuellement, ChaosSim utilise des **caractères Unicode** pour les icônes dans l'interface ImGui :
+
+- ▶ Play
+- ⏸ Pause
+- ↻ Reset
+- 📸 Screenshot
+- 🎬 Présentation
+- ⏹ Stop
+
+## 🖼️ Icônes Système (Optionnel)
+
+Si vous souhaitez ajouter une icône pour l'application Windows :
+
+### Icône de l'Application (.ico)
+```
+assets/icons/
+└── chaossim.ico    (Icône 256x256, format .ico pour Windows)
+```
+
+### Génération d'Icône
+
+Vous pouvez créer une icône personnalisée avec :
+- **GIMP** (gratuit) : Exporter en .ico
+- **IcoFX** : Éditeur d'icônes dédié
+- **Online ICO Converter** : https://convertio.co/png-ico/
+
+## 🎯 Concept d'Icône Suggéré
+
+Pour représenter ChaosSim, une icône pourrait montrer :
+- Un attracteur de Lorenz stylisé (forme papillon)
+- Des trails colorés en spirale
+- Un symbole de chaos (∞ ou attracteur simplifié)
+
+## 🔧 Utilisation de l'Icône
+
+### Windows
+```cpp
+// Dans main.cpp, après création de la fenêtre :
+SDL_Surface* icon = SDL_LoadBMP("assets/icons/chaossim.bmp");
+if (icon) {
+    SDL_SetWindowIcon(window, icon);
+    SDL_FreeSurface(icon);
+}
+```
+
+### Linux
+Les icônes Linux sont généralement gérées par le gestionnaire de fenêtres.
+
+### macOS
+L'icône est définie dans le fichier `Info.plist` du bundle.
+
+## 📝 Structure Attendue
+
+```
+assets/icons/
+├── README.md           (ce fichier)
+├── chaossim.ico       (Windows, optionnel)
+├── chaossim.png       (Icône haute résolution, optionnel)
+└── chaossim_16x16.png (Petite icône, optionnel)
+```
+
+## 📌 Note
+
+Les icônes ne sont **PAS obligatoires** pour faire fonctionner ChaosSim.
+Elles servent uniquement à personnaliser l'apparence de l'application dans le système d'exploitation.
+
+## 🎨 Palette de Couleurs Suggérée
+
+Pour créer une icône cohérente avec ChaosSim :
+- Bleu électrique : `#00FFFF` (trails)
+- Violet : `#FF00FF` (points chauds)
+- Noir profond : `#000000` (fond)
+- Blanc pur : `#FFFFFF` (accents)

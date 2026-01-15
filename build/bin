@@ -1,0 +1,97 @@
+# 📦 Binary Directory (bin/)
+
+Ce dossier contient les **exécutables compilés** de ChaosSim.
+
+## 📋 Fichiers Générés
+
+Après compilation avec `python build.py`, vous trouverez :
+
+### Windows
+```
+build/bin/
+├── ChaosSim.exe        # Exécutable principal
+└── SDL3.dll            # Bibliothèque SDL3 (dépendance)
+```
+
+### Linux
+```
+build/bin/
+└── ChaosSim            # Exécutable principal
+```
+
+### macOS
+```
+build/bin/
+└── ChaosSim            # Exécutable principal
+```
+
+## 🚀 Exécution
+
+**Windows :**
+```cmd
+cd build\bin
+ChaosSim.exe
+```
+
+**Linux/macOS :**
+```bash
+cd build/bin
+./ChaosSim
+```
+
+## 📝 Note sur les DLL (Windows)
+
+⚠️ **Important :** Sur Windows, l'exécutable nécessite `SDL3.dll` dans le même dossier.
+
+Si vous obtenez l'erreur "SDL3.dll introuvable" :
+```cmd
+# Copier SDL3.dll depuis thirdparty
+copy ..\..\thirdparty\SDL3\lib\windows\SDL3.dll .
+```
+
+## 🗑️ Nettoyage
+
+Pour nettoyer ce dossier :
+```bash
+# Avec le script de build
+python build.py clean
+
+# Manuellement
+rm -rf build/bin/*      # Linux/macOS
+del /Q build\bin\*      # Windows
+```
+
+## 📊 Taille Typique des Fichiers
+
+```
+ChaosSim.exe    : ~500 KB - 2 MB (selon optimisation)
+SDL3.dll        : ~2-3 MB
+Total           : ~3-5 MB
+```
+
+## 🔒 Sécurité
+
+Ce dossier est listé dans `.gitignore` et ne doit **PAS** être commité sur Git.
+Les exécutables sont générés localement par chaque développeur.
+
+## 📌 Dépannage
+
+### Problème : "Permission denied"
+```bash
+# Donner les droits d'exécution (Linux/macOS)
+chmod +x ChaosSim
+```
+
+### Problème : "Cannot find libSDL3.so" (Linux)
+```bash
+# Ajouter le chemin à LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=../../thirdparty/SDL3/lib/linux:$LD_LIBRARY_PATH
+./ChaosSim
+```
+
+### Problème : "Dylib not found" (macOS)
+```bash
+# Copier la dylib
+cp ../../thirdparty/SDL3/lib/macos/libSDL3.dylib .
+./ChaosSim
+```
