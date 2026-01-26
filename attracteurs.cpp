@@ -1,4 +1,4 @@
-#include <SFML/Graphics.hpp>
+#include <SDL/Graphics.hpp>
 #include <vector>
 #include <cmath>
 
