@@ -1,6 +1,8 @@
 #include <SDL/Graphics.hpp>
 #include <vector>
 #include <cmath>
+#include "Attractor.h"
+#include "Utils.h"
 
 struct Point { float x, y, z; };
 
@@ -80,7 +82,7 @@ else if (type == 13) { // Kaplan-Yorke
     dy = (0.2f * p.y + cos(4.0f * 3.14159f * p.x)) - p.y;
     dz = 0;
 }
-else if (type == 14) { // Double Scroll
+else (type == 14) { // Double Scroll
     dx = 0.7f * (p.y - p.x);
     dy = p.x - p.x * p.z + 7.0f * p.y;
     dz = p.x * p.y - 0.7f * p.z;
@@ -103,19 +105,28 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) window.close();
             if (event.type == sf::Event::KeyPressed) {
+                points.clear();
+                
                 if (event.key.code == sf::Keyboard::Num1) { att.type = 1; points.clear(); att.p = {0.1, 0, 0}; zoom = 15; }
                 if (event.key.code == sf::Keyboard::Num2) { att.type = 2; points.clear(); att.p = {0.1, 0, 0}; zoom = 15; }
-                if (event.key.code == sf::Keyboard::Num3) { att.type = 3; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num4) { att.type = 4; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num5) { att.type = 5; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num6) { att.type = 6; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num7) { att.type = 7; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num8) { att.type = 8; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num9) { att.type = 9; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num10) { att.type = 10; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num11) { att.type = 11; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num12) { att.type = 12; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
-                if (event.key.code == sf::Keyboard::Num13) { att.type = 13; points.clear(); att.p = {0.1, 0, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num3) { att.type = 3; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num4) { att.type = 4; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num5) { att.type = 5; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num6) { att.type = 6; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num7) { att.type = 7; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num8) { att.type = 8; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num9) { att.type = 9; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num10) { att.type = 10; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num11) { att.type = 11; points.clear(); att.p = {0.1, 1, 0}; zoom = 150; }
+                if (event.key.code == sf::Keyboard::Num12) { att.type = 12; points.clear(); att.p = {0.1, 1, 0}; zoom = 200; }
+                if (event.key.code == sf::Keyboard::Num13) { att.type = 13; points.clear(); att.p = {0.1, 0.1, 1}; zoom = 200; }
+
+                /Modification de l attracteur 14 (Double scroll)
+                 if (event.key.code == sf::Keyboard::Num1) { 
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LShift)) { // Utilise Shift+1 pour le 14
+            att.type = 14; att.p = {0.1, 0.1, 0.1}; zoom = 10;
+
+
 
 
             }
