@@ -5,7 +5,7 @@
 Créez `README.md` (racine du projet) :
 
 ```markdown
-# 🌀 ChaosSim - Visualiseur d'Attracteurs Étranges
+#  Attracteur_etrange - Visualiseur d'Attracteurs Étranges
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/[tondiphanue2-hash]/Attracteur_etrange)
 [![C++](https://img.shields.io/badge/C++-17-00599C.svg)](https://isocpp.org/)
@@ -18,7 +18,7 @@ Créez `README.md` (racine du projet) :
 
 ---
 
-## 📋 Description
+## Description
 
 ChaosSim est une application de **visualisation 3D interactive** de systèmes dynamiques chaotiques. Le projet implémente trois attracteurs célèbres (Lorenz, Rössler, Chen) avec :
 
@@ -33,7 +33,7 @@ ChaosSim est une application de **visualisation 3D interactive** de systèmes dy
 
 ---
 
-## 🎥 Démonstration
+##  Démonstration
 
 ### Attracteurs Implémentés
 
@@ -43,7 +43,7 @@ ChaosSim est une application de **visualisation 3D interactive** de systèmes dy
 
 ---
 
-## 🚀 Installation Rapide
+##  Installation Rapide
 
 ### Prérequis
 
@@ -85,9 +85,9 @@ ChaosSim.exe        # Windows
 
 ---
 
-## 📊 Fonctionnalités
+## Fonctionnalités
 
-### ✨ Principales
+###  Principales
 - [x] 3 attracteurs chaotiques (Lorenz, Rössler, Chen)
 - [x] Visualisation 3D avec projection perspective complète
 - [x] Rotation interactive et zoom fluide
@@ -104,7 +104,7 @@ ChaosSim.exe        # Windows
 - [x] Mode de coloration
 
 ---
-# 🎥 Démonstration
+#  Démonstration
 
 ### Attracteurs Principaux
 
@@ -114,7 +114,7 @@ ChaosSim.exe        # Windows
 
 ---
 
-## 🚀 Installation Rapide
+##  Installation Rapide
 
 ### Prérequis
 - **Compilateur** : GCC 11+ ou Clang (support C++17)
@@ -146,7 +146,7 @@ Num 11	Activer l'Attracteur de Chua
 Shift + 1	Activer le Double Scroll (Type 14)
 R	Réinitialiser les points
 Échap	Quitter l'application
-🏗️ Architecture du Code
+  Architecture du Code
 
 Le projet est structuré pour séparer la logique mathématique du rendu graphique :
 
@@ -158,7 +158,7 @@ Le projet est structuré pour séparer la logique mathématique du rendu graphiq
 
     thirdparty/ : Contient SDL3, Dear ImGui et GLM pour les mathématiques.
 
-📐 Équations Mathématiques (Exemple)
+ Équations Mathématiques (Exemple)
 Attracteur de Lorenz
 
 dx/dt=σ(y−x) dy/dt=x(ρ−z)−y dz/dt=xy−βz
